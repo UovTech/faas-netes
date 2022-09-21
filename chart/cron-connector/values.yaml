@@ -1,4 +1,4 @@
-image: ghcr.io/openfaas/cron-connector:0.6.1
+image: ghcr.dockerproxy.com/openfaas/cron-connector:0.6.1
 
 gatewayURL: http://gateway.openfaas:8080
 

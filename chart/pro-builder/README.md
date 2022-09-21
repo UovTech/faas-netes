@@ -46,7 +46,7 @@ kubectl create secret generic payload-secret \
 Generate mTLS certificates for BuildKit and the Pro Builder which are used to encrypt messages between the builder component and buildkit.
 
 ```bash
-docker run -v `pwd`/out:/tmp/ -ti ghcr.io/openfaas/certgen:0.1.0-rc2
+docker run -v `pwd`/out:/tmp/ -ti ghcr.dockerproxy.com/openfaas/certgen:0.1.0-rc2
 
 # Reset the permissions of the files to your own user:
 sudo chown -R $USER:$USER out

@@ -36,7 +36,7 @@ openfaasImagePullPolicy: "Always"
 ## Advanced auto-scaler for scaling functions on RPS, CPU and in-flight requests
 ## Includes: scale to zero
 autoscaler:
-  image: ghcr.io/openfaasltd/autoscaler:0.2.5
+  image: ghcr.dockerproxy.com/openfaasltd/autoscaler:0.2.5
   replicas: 1
   enabled: false
   resources:
@@ -53,7 +53,7 @@ autoscaler:
 ## To use with port-forwarding, set publicURL to 
 ## http://127.0.0.1
 dashboard:
-  image: ghcr.io/openfaasltd/openfaas-dashboard:0.1.0
+  image: ghcr.dockerproxy.com/openfaasltd/openfaas-dashboard:0.1.0
   publicURL: https://dashboard.example.com
   replicas: 1
   enabled: false
@@ -68,7 +68,7 @@ dashboard:
 ## now be set "enabled=false" when using the new autoscaler
 ## since it handles scaling to zero
 faasIdler:
-  image: ghcr.io/openfaasltd/faas-idler:0.5.0
+  image: ghcr.dockerproxy.com/openfaasltd/faas-idler:0.5.0
   replicas: 1
   enabled: false
   inactivityDuration: 3m                # If a function is inactive for 15 minutes, it may be scaled to zero
@@ -99,14 +99,14 @@ oidcAuthPlugin:
       memory: "120Mi"
       cpu: "50m"
   replicas: 1
-  image: ghcr.io/openfaasltd/openfaas-oidc-plugin:0.5.2
+  image: ghcr.dockerproxy.com/openfaasltd/openfaas-oidc-plugin:0.5.2
   securityContext: true
 
 gatewayPro:
-  image: ghcr.io/openfaasltd/gateway:0.2.2
+  image: ghcr.dockerproxy.com/openfaasltd/gateway:0.2.2
 
 gateway:
-  image: ghcr.io/openfaas/gateway:0.25.1
+  image: ghcr.dockerproxy.com/openfaas/gateway:0.25.1
   readTimeout: "65s"
   writeTimeout: "65s"
   upstreamTimeout: "60s"  # Must be smaller than read/write_timeout
@@ -133,7 +133,7 @@ gateway:
       cpu: "50m"
 
 basicAuthPlugin:
-  image: ghcr.io/openfaas/basic-auth:0.25.1
+  image: ghcr.dockerproxy.com/openfaas/basic-auth:0.25.1
   replicas: 1
   resources:
     requests:
@@ -141,13 +141,13 @@ basicAuthPlugin:
       cpu: "20m"
 
 faasnetesPro:
-  image: ghcr.io/openfaasltd/faas-netes:0.1.6
+  image: ghcr.dockerproxy.com/openfaasltd/faas-netes:0.1.6
 
 operatorPro:
-  image: ghcr.io/openfaasltd/faas-netes:0.1.6
+  image: ghcr.dockerproxy.com/openfaasltd/faas-netes:0.1.6
 
 faasnetes:
-  image: ghcr.io/openfaas/faas-netes:0.15.2
+  image: ghcr.dockerproxy.com/openfaas/faas-netes:0.15.2
   imagePullPolicy: "Always"    # Image pull policy for deployed functions
   httpProbe: true              # Setting to true will use HTTP for readiness and liveness probe on function pods
   setNonRootUser: false        # It's recommended to set this to "true", but test your images before committing to it
@@ -166,7 +166,7 @@ faasnetes:
 
 # replaces faas-netes with openfaas-operator
 operator:
-  image: ghcr.io/openfaas/faas-netes:0.15.2
+  image: ghcr.dockerproxy.com/openfaas/faas-netes:0.15.2
   create: false
   resources:
     requests:
@@ -179,7 +179,7 @@ operator:
 #
 # Enabled automatically when openfaasPro is set to true
 queueWorkerPro:
-  image: ghcr.io/openfaasltd/queue-worker:0.1.7
+  image: ghcr.dockerproxy.com/openfaasltd/queue-worker:0.1.7
   maxRetryAttempts: "10"
   maxRetryWait: "120s"
   initialRetryWait: "10s"
@@ -195,7 +195,7 @@ queueWorkerPro:
   printResponseBody: false
 
 queueWorker:
-  image: ghcr.io/openfaas/queue-worker:0.13.1
+  image: ghcr.dockerproxy.com/openfaas/queue-worker:0.13.1
   # Control HA of queue-worker
   replicas: 1
   # Control the concurrent invocations
@@ -210,7 +210,7 @@ queueWorker:
 # monitoring and auto-scaling components
 # both components
 prometheus:
-  image: prom/prometheus:v2.38.0
+  image: dockerproxy.com/prom/prometheus:v2.38.0
   create: true
   resources:
     requests:
@@ -218,7 +218,7 @@ prometheus:
   annotations: {}
 
 alertmanager:
-  image: prom/alertmanager:v0.24.0
+  image: dockerproxy.com/prom/alertmanager:v0.24.0
   create: true
   resources:
     requests:
@@ -234,12 +234,12 @@ nats:
     enabled: false
     host: ""
     port: ""
-  image: nats-streaming:0.22.0
+  image: dockerproxy.com/library/nats-streaming:0.22.0
   enableMonitoring: false
   metrics:
     # Should stay off by default because the exporter is not multi-arch (yet)
     enabled: false
-    image: natsio/prometheus-nats-exporter:0.8.0
+    image: dockerproxy.com/natsio/prometheus-nats-exporter:0.8.0
   resources:
     requests:
       memory: "120Mi"
@@ -268,7 +268,7 @@ ingress:
 # ingressOperator (optional) – component to have specific FQDN and TLS for Functions
 # https://github.com/openfaas-incubator/ingress-operator
 ingressOperator:
-  image: ghcr.io/openfaas/ingress-operator:0.7.1
+  image: ghcr.dockerproxy.com/openfaas/ingress-operator:0.7.1
   replicas: 1
   create: false
   resources:

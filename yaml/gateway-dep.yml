@@ -33,7 +33,7 @@ spec:
             requests:
               cpu: 50m
               memory: 120Mi
-        image: ghcr.io/openfaas/gateway:0.25.1
+        image: ghcr.dockerproxy.com/openfaas/gateway:0.25.1
         imagePullPolicy: Always
         command:
           - ./gateway
@@ -98,7 +98,7 @@ spec:
             requests:
               cpu: 50m
               memory: 120Mi
-        image: ghcr.io/openfaas/faas-netes:0.15.2
+        image: ghcr.dockerproxy.com/openfaas/faas-netes:0.15.2
         imagePullPolicy: Always
         securityContext:
           readOnlyRootFilesystem: true

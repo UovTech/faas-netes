@@ -40,7 +40,7 @@ helm upgrade openfaas --install chart/openfaas \
     --set dashboard.publicURL=https://portal.exit.o6s.io
 ```
 
-Confirm faas-netes and queue-worker versions are from ghcr.io/openfaasltd
+Confirm faas-netes and queue-worker versions are from ghcr.dockerproxy.com/openfaasltd
 
 Confirm that autoscaler is deployed.
 

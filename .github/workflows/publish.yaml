@@ -35,7 +35,7 @@ jobs:
         with:
           username: ${{ github.repository_owner }}
           password: ${{ secrets.GITHUB_TOKEN }}
-          registry: ghcr.io
+          registry: ghcr.dockerproxy.com
 
       - name: Get TAG
         id: get_tag
@@ -61,6 +61,6 @@ jobs:
             GIT_COMMIT=${{env.GIT_COMMIT}}
             VERSION=${{env.VERSION}}
           tags: |
-            ghcr.io/${{ steps.get_repo_owner.outputs.repo_owner }}/faas-netes:${{ github.sha }}
-            ghcr.io/${{ steps.get_repo_owner.outputs.repo_owner }}/faas-netes:${{ steps.get_tag.outputs.TAG }}
-            ghcr.io/${{ steps.get_repo_owner.outputs.repo_owner }}/faas-netes:latest
+            ghcr.dockerproxy.com/${{ steps.get_repo_owner.outputs.repo_owner }}/faas-netes:${{ github.sha }}
+            ghcr.dockerproxy.com/${{ steps.get_repo_owner.outputs.repo_owner }}/faas-netes:${{ steps.get_tag.outputs.TAG }}
+            ghcr.dockerproxy.com/${{ steps.get_repo_owner.outputs.repo_owner }}/faas-netes:latest

@@ -5,7 +5,7 @@ VERBOSE?=false
 
 TAG?=latest
 OWNER?=openfaas
-SERVER?=ghcr.io
+SERVER?=ghcr.dockerproxy.com
 export DOCKER_CLI_EXPERIMENTAL=enabled
 export DOCKER_BUILDKIT=1
 

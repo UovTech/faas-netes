@@ -41,7 +41,7 @@ helm upgrade --install --namespace openfaas \
 
 | Parameter          | Description                                      | Default                                  |
 |--------------------|--------------------------------------------------|------------------------------------------|
-| `image`            | The cron-connector image that should be deployed | `ghcr.io/openfaas/cron-connector:0.3.2`  |
+| `image`            | The cron-connector image that should be deployed | `ghcr.dockerproxy.com/openfaas/cron-connector:0.3.2`  |
 | `gatewayURL`       | The URL for the API gateway.                     | `"http://gateway.openfaas:8080"`         |
 | `basicAuth`        | Enable or disable basic auth                     | `true`                                   |
 | `asyncInvocation`  | Invoke via the asynchronous function endpoint    | `false`                                  |
